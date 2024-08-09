@@ -1,0 +1,32 @@
+@import 'variables';
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin center-x {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin center-y {
+  display: flex;
+  align-items: center;
+}
+
+@mixin center-col {
+  @include center;
+  flex-direction: column;
+}
+
+@mixin center-x-between {
+  @include center-x;
+  justify-content: space-between;
+}
+
+@mixin center-y-between {
+  @include center-y;
+  justify-content: space-between;
+}

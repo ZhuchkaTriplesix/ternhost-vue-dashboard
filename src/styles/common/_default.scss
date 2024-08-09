@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#wrapper {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input {
+  border: 0;
+  outline: 0;
+}
+
+.container {
+  width: 1536px;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none !important;
+}

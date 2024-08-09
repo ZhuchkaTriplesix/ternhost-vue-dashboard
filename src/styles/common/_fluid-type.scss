@@ -1,0 +1,61 @@
+@use 'sass:math';
+@import 'variables';
+
+
+// V1
+$text-xs: 12px;
+$text-sm: 14px;
+$text-base: 16px;
+$text-lg: 18px;
+
+$text-xl: 20px;
+$text-2xl: 24px;
+$text-3xl: 30px;
+$text-4xl: 36px;
+$text-5xl: 48px;
+$text-6xl: 60px;
+$text-7xl: 72px;
+$text-8xl: 96px;
+$text-9xl: 128px;
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@mixin fluid-type($min-font-size, $max-font-size, $weight: 400, $color: $black-100, $min-vw: 360px, $max-vw: 1920px) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+
+  font-family: $poppins;
+  color: $color;
+  font-weight: $weight;
+}
+
+@mixin text($weight: 400, $color: $black-100) {
+  font-family: $poppins;
+  color: $color;
+  font-weight: $weight;
+}
+
+$min_width: 360px;
+$max_width: 1920px;
+// $min_font: 16px;
+// $max_font: 22px;
